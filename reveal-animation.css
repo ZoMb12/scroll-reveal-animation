@@ -1,0 +1,56 @@
+/* ============================================================
+   Scroll Reveal Animation — CSS
+   Zero-dependency scroll-driven reveal/exit animations.
+   ============================================================ */
+
+:root {
+  --ease-spring: cubic-bezier(.165, .84, .44, 1);
+}
+
+/* ── Base reveal (slides up from below by default) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--exit-y, 60px));
+  transition: opacity 1s var(--ease-spring), transform 1s var(--ease-spring);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Left / Right variants ── */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(var(--exit-x, -60px));
+  transition: opacity 1s var(--ease-spring), transform 1s var(--ease-spring);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(var(--exit-x, 60px));
+  transition: opacity 1s var(--ease-spring), transform 1s var(--ease-spring);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Stagger child — each child gets cascading delay via --i ── */
+.reveal-stagger {
+  opacity: 0;
+  transform: translateY(var(--exit-y, 60px));
+  transition: opacity 1s var(--ease-spring), transform 1s var(--ease-spring);
+}
+
+.reveal-stagger.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--i, 0) * 0.06s);
+}
